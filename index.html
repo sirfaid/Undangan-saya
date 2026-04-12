@@ -67,4 +67,25 @@
             var audio = document.getElementById("lagu");
             audio.play().catch(function(e) { console.log("Musik tertunda"); });
 
-            // 2
+            // 2. Hilangkan Sampul
+            document.getElementById("coverPage").style.display = "none";
+
+            // 3. Tampilkan Konten Utama
+            document.getElementById("mainContent").style.display = "block";
+
+            // 4. Reset Scroll ke atas
+            window.scrollTo(0, 0);
+        }
+
+        // Script Countdown Sederhana
+        const targetDate = new Date("Dec 12, 2026 08:00:00").getTime();
+        setInterval(function() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+            document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        }, 1000);
+    </script>
+</body>
+</html>
