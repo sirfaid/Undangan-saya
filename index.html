@@ -112,11 +112,25 @@
     <script>
         // Buka Undangan
         function openInvitation() {
+                    function openInvitation() {
+            // Mengambil elemen musik
+            var audio = document.getElementById("myMusic");
+            
+            // Mencoba memutar musik (jika gagal, web tetap terbuka)
+            audio.play().catch(function(error) {
+                console.log("Musik diblokir browser, tapi undangan tetap dibuka.");
+            });
+
+            // Menampilkan konten utama
             document.getElementById('mainContent').classList.remove('hidden');
-            document.getElementById('myMusic').play();
+            
+            // Menyembunyikan layar sampul
             document.getElementById('btnOpen').parentElement.parentElement.classList.add('hidden');
+            
+            // Scroll ke atas otomatis
             window.scrollTo(0, 0);
         }
+
 
         // Tampilkan Info Bank
         function showGift() {
