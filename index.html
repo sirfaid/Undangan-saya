@@ -3,52 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pernikahan</title>
+    <title>Undangan Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         .font-aesthetic { font-family: 'Great Vibes', cursive; }
-        body { font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        body { font-family: 'Montserrat', sans-serif; }
         #konten-utama { display: none; }
+        .bg-gradient-gold { background: linear-gradient(135deg, #b4975a 0%, #8e7644 100%); }
     </style>
 </head>
 <body class="bg-stone-50">
 
     <div id="halaman-sampul" class="fixed inset-0 z-[100] flex flex-col justify-center items-center text-center bg-white p-6">
-        <h2 class="text-stone-500 tracking-[0.3em] uppercase mb-4 text-sm">The Wedding of</h2>
+        <h2 class="text-stone-400 tracking-[0.3em] uppercase mb-4 text-xs">The Wedding of</h2>
         <h1 class="text-6xl font-aesthetic text-amber-700 mb-4">Romeo & Juliet</h1>
-        <p class="text-lg tracking-widest mb-10">12 . 12 . 2026</p>
-        
-        <button onclick="bukaSekarang()" class="bg-amber-700 text-white px-10 py-4 rounded-full shadow-2xl font-bold tracking-widest active:scale-95 transition-all">
+        <p class="text-lg tracking-[0.2em] mb-10 text-stone-600">12 . 12 . 2026</p>
+        <button onclick="bukaUndangan()" class="bg-amber-700 text-white px-10 py-4 rounded-full shadow-2xl font-bold tracking-widest active:scale-95 transition-all">
             BUKA UNDANGAN
         </button>
     </div>
 
     <div id="konten-utama">
-        <section class="min-h-screen py-20 px-6 text-center flex flex-col justify-center">
-            <h2 class="text-4xl font-aesthetic text-amber-700 mb-6">Selamat Datang</h2>
-            <p class="mb-10 text-stone-600 italic">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri..."</p>
-            
-            <div class="bg-white p-8 rounded-2xl shadow-lg border border-stone-200 max-w-sm mx-auto">
-                <h3 class="text-xl font-bold mb-4">Kado Digital</h3>
-                <p class="text-stone-500 mb-2">Bank BCA</p>
-                <p class="text-2xl font-mono text-amber-700 mb-2">1234567890</p>
-                <p class="text-sm">a/n Romeo Putra</p>
+        
+        <section class="py-20 px-6 text-center">
+            <h2 class="text-4xl font-aesthetic text-amber-700 mb-6">Mempelai</h2>
+            <div class="space-y-10">
+                <div>
+                    <h3 class="text-2xl font-bold">Romeo Putra</h3>
+                    <p class="text-stone-500 italic text-sm">Putra dari Bapak A & Ibu B</p>
+                </div>
+                <div class="text-3xl font-aesthetic text-amber-700">dengan</div>
+                <div>
+                    <h3 class="text-2xl font-bold">Juliet Putri</h3>
+                    <p class="text-stone-500 italic text-sm">Putri dari Bapak C & Ibu D</p>
+                </div>
             </div>
         </section>
+
+        <section class="py-16 bg-white text-center shadow-inner">
+            <h2 class="text-xl font-semibold mb-8 tracking-widest text-stone-500 uppercase">Menuju Hari Bahagia</h2>
+            <div class="flex justify-center gap-4">
+                <div class="bg-stone-800 text-white p-4 rounded-xl w-20 shadow-lg">
+                    <span id="days" class="text-2xl font-bold">00</span>
+                    <p class="text-[10px] uppercase font-light">Hari</p>
+                </div>
+                <div class="bg-stone-800 text-white p-4 rounded-xl w-20 shadow-lg">
+                    <span id="hours" class="text-2xl font-bold">00</span>
+                    <p class="text-[10px] uppercase font-light">Jam</p>
+                </div>
+                <div class="bg-stone-800 text-white p-4 rounded-xl w-20 shadow-lg">
+                    <span id="minutes" class="text-2xl font-bold">00</span>
+                    <p class="text-[10px] uppercase font-light">Menit</p>
+                </div>
+                <div class="bg-amber-700 text-white p-4 rounded-xl w-20 shadow-lg animate-pulse">
+                    <span id="seconds" class="text-2xl font-bold">00</span>
+                    <p class="text-[10px] uppercase font-light">Detik</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-4 text-center">
+            <h2 class="text-4xl font-aesthetic text-amber-700 mb-10">Galeri Kebahagiaan</h2>
+            <div class="grid grid-cols-2 gap-2 max-w-md mx-auto">
+                <div class="bg-stone-200 h-40 rounded-lg flex items-center justify-center text-stone-400 italic">Foto 1</div>
+                <div class="bg-stone-200 h-40 rounded-lg flex items-center justify-center text-stone-400 italic">Foto 2</div>
+                <div class="bg-stone-200 h-40 rounded-lg flex items-center justify-center text-stone-400 italic text-xs">Upload fotomu nanti di sini</div>
+                <div class="bg-stone-200 h-40 rounded-lg flex items-center justify-center text-stone-400 italic">Foto 4</div>
+            </div>
+        </section>
+
+        <section class="py-20 px-6 text-center bg-stone-100">
+            <h2 class="text-3xl font-aesthetic text-amber-700 mb-6">Amplop Digital</h2>
+            <div class="p-8 bg-white rounded-3xl shadow-xl max-w-sm mx-auto border-t-4 border-amber-700">
+                <p class="font-bold mb-2">BANK BCA</p>
+                <p class="text-2xl font-bold tracking-widest text-stone-800 mb-2">1234567890</p>
+                <p class="text-sm text-stone-500 mb-6 font-semibold uppercase">a/n Romeo Putra</p>
+                <button onclick="alert('Nomor rekening berhasil disalin!')" class="text-amber-700 text-xs font-bold border border-amber-700 px-4 py-2 rounded-full uppercase tracking-tighter">Salin Rekening</button>
+            </div>
+        </section>
+
+        <section class="py-20 px-6 text-center">
+            <h2 class="text-3xl font-aesthetic text-amber-700 mb-8">Konfirmasi Kehadiran</h2>
+            <div class="max-w-sm mx-auto space-y-4">
+                <input type="text" id="nama" placeholder="Nama Lengkap" class="w-full p-4 rounded-xl border border-stone-300 focus:outline-amber-700 shadow-sm">
+                <select id="hadir" class="w-full p-4 rounded-xl border border-stone-300 focus:outline-amber-700 shadow-sm bg-white">
+                    <option>Hadir</option>
+                    <option>Tidak Bisa Hadir</option>
+                </select>
+                <button onclick="kirimWA()" class="w-full bg-green-600 text-white p-4 rounded-xl font-bold shadow-lg shadow-green-200">KIRIM RSVP KE WHATSAPP</button>
+            </div>
+        </section>
+
+        <footer class="py-10 text-center text-stone-400 text-[10px] tracking-widest uppercase">
+            Designed by Sirfaid Invitation
+        </footer>
+
     </div>
 
+    <audio id="musik" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
-        function bukaSekarang() {
-            // Hilangkan Sampul
+        // Fungsi Buka Undangan
+        function bukaUndangan() {
             document.getElementById('halaman-sampul').style.display = 'none';
-            
-            // Tampilkan Isi
             document.getElementById('konten-utama').style.display = 'block';
-            
-            // Scroll otomatis ke atas
+            document.getElementById('musik').play().catch(e => console.log("Audio play blocked"));
             window.scrollTo(0, 0);
         }
+
+        // Fungsi RSVP WhatsApp
+        function kirimWA() {
+            const nama = document.getElementById('nama').value;
+            const hadir = document.getElementById('hadir').value;
+            const pesan = `Halo, saya ${nama}. Saya konfirmasi akan ${hadir} di acara pernikahan Anda.`;
+            window.open(`https://wa.me/628123456789?text=${encodeURIComponent(pesan)}`);
+        }
+
+        // Fungsi Countdown (Hitung Mundur)
+        const target = new Date("Dec 12, 2026 08:00:00").getTime();
+        
+        setInterval(() => {
+            const skrg = new Date().getTime();
+            const sisa = target - skrg;
+
+            const d = Math.floor(sisa / (1000 * 60 * 60 * 24));
+            const h = Math.floor((sisa % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((sisa % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((sisa % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d;
+            document.getElementById("hours").innerText = h;
+            document.getElementById("minutes").innerText = m;
+            document.getElementById("seconds").innerText = s;
+        }, 1000);
     </script>
 </body>
 </html>
