@@ -157,35 +157,41 @@
             document.getElementById("seconds").innerText = s;
         }, 1000);
     </script>
-    let isAutoScrolling = false;
+    <script>
+        // SEMUA KODE JAVASCRIPT HARUS DI DALAM SINI
+        let isAutoScrolling = false;
 
-function bukaUndangan() {
-    // 1. Logika awal: Sembunyikan sampul dan putar musik
-    document.getElementById('halaman-sampul').style.display = 'none';
-    document.getElementById('konten-utama').style.display = 'block';
-    document.getElementById('musik').play().catch(e => console.log("Audio blocked"));
-    window.scrollTo(0, 0);
-    
-    // 2. Tambahan: Jalankan Auto-Scroll perlahan
-    mulaiAutoScroll();
-}
-
-function mulaiAutoScroll() {
-    isAutoScrolling = true;
-    const speed = 0.5; // Angka lebih kecil = lebih lambat/smooth
-    
-    function step() {
-        if (!isAutoScrolling) return;
-        window.scrollBy(0, speed);
-        if ((window.innerHeight + window.pageYOffset) < document.body.offsetHeight) {
-            requestAnimationFrame(step);
+        function bukaUndangan() {
+            document.getElementById('halaman-sampul').style.display = 'none';
+            document.getElementById('konten-utama').style.display = 'block';
+            document.getElementById('musik').play().catch(e => console.log("Audio blocked"));
+            window.scrollTo(0, 0);
+            mulaiAutoScroll();
         }
-    }
-    setTimeout(step, 2000); // Tunggu 2 detik baru mulai jalan sendiri
-}
 
-// Berhenti otomatis jika layar disentuh tamu
-window.addEventListener('touchstart', () => isAutoScrolling = false);
-window.addEventListener('wheel', () => isAutoScrolling = false);
+        function mulaiAutoScroll() {
+            isAutoScrolling = true;
+            const speed = 0.5; 
+            function step() {
+                if (!isAutoScrolling) return;
+                window.scrollBy(0, speed);
+                if ((window.innerHeight + window.pageYOffset) < document.body.offsetHeight) {
+                    requestAnimationFrame(step);
+                }
+            }
+            setTimeout(step, 2000);
+        }
+
+        window.addEventListener('touchstart', () => { isAutoScrolling = false; });
+        window.addEventListener('wheel', () => { isAutoScrolling = false; });
+
+        // Fungsi kirim WA yang lama juga taruh di sini ya
+        function kirimWA() {
+            const nama = document.getElementById('nama').value;
+            const hadir = document.getElementById('hadir').value;
+            const pesan = `Halo, saya ${nama}. Saya konfirmasi akan ${hadir}.`;
+            window.open(`https://wa.me/628123456789?text=${encodeURIComponent(pesan)}`);
+        }
+    </script> 
 </body>
 </html>
