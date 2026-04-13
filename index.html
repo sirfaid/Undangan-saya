@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Premium</title>
+    <title>Undangan Premium - Romeo & Juliet</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         .font-aesthetic { font-family: 'Great Vibes', cursive; }
         body { font-family: 'Montserrat', sans-serif; }
         #konten-utama { display: none; }
-        .bg-gradient-gold { background: linear-gradient(135deg, #b4975a 0%, #8e7644 100%); }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #b4975a; border-radius: 10px; }
     </style>
 </head>
 <body class="bg-stone-50">
@@ -18,6 +19,12 @@
     <div id="halaman-sampul" class="fixed inset-0 z-[100] flex flex-col justify-center items-center text-center bg-white p-6">
         <h2 class="text-stone-400 tracking-[0.3em] uppercase mb-4 text-xs">The Wedding of</h2>
         <h1 class="text-6xl font-aesthetic text-amber-700 mb-4">Romeo & Juliet</h1>
+        
+        <div class="mb-10 mt-6">
+            <p class="text-stone-500 text-xs italic mb-2">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
+            <h3 id="nama-tamu" class="text-xl font-bold text-stone-800 tracking-wide uppercase italic">Tamu Undangan</h3>
+        </div>
+
         <p class="text-lg tracking-[0.2em] mb-10 text-stone-600">12 . 12 . 2026</p>
         <button onclick="bukaUndangan()" class="bg-amber-700 text-white px-10 py-4 rounded-full shadow-2xl font-bold tracking-widest active:scale-95 transition-all">
             BUKA UNDANGAN
@@ -42,73 +49,56 @@
         </section>
 
         <section class="py-16 bg-white text-center shadow-inner">
-            <h2 class="text-xl font-semibold mb-8 tracking-widest text-stone-500 uppercase">Menuju Hari Bahagia</h2>
+            <h2 class="text-xl font-semibold mb-8 tracking-widest text-stone-500 uppercase text-xs">Menuju Hari Bahagia</h2>
             <div class="flex justify-center gap-4">
-                <div class="bg-stone-800 text-white p-4 rounded-xl w-20 shadow-lg">
-                    <span id="days" class="text-2xl font-bold">00</span>
-                    <p class="text-[10px] uppercase font-light">Hari</p>
+                <div class="bg-stone-800 text-white p-4 rounded-xl w-16 shadow-lg">
+                    <span id="days" class="text-xl font-bold">00</span>
+                    <p class="text-[8px] uppercase font-light">Hari</p>
                 </div>
-                <div class="bg-stone-800 text-white p-4 rounded-xl w-20 shadow-lg">
-                    <span id="hours" class="text-2xl font-bold">00</span>
-                    <p class="text-[10px] uppercase font-light">Jam</p>
+                <div class="bg-stone-800 text-white p-4 rounded-xl w-16 shadow-lg">
+                    <span id="hours" class="text-xl font-bold">00</span>
+                    <p class="text-[8px] uppercase font-light">Jam</p>
                 </div>
-                <div class="bg-stone-800 text-white p-4 rounded-xl w-20 shadow-lg">
-                    <span id="minutes" class="text-2xl font-bold">00</span>
-                    <p class="text-[10px] uppercase font-light">Menit</p>
+                <div class="bg-stone-800 text-white p-4 rounded-xl w-16 shadow-lg">
+                    <span id="minutes" class="text-xl font-bold">00</span>
+                    <p class="text-[8px] uppercase font-light">Menit</p>
                 </div>
-                <div class="bg-amber-700 text-white p-4 rounded-xl w-20 shadow-lg animate-pulse">
-                    <span id="seconds" class="text-2xl font-bold">00</span>
-                    <p class="text-[10px] uppercase font-light">Detik</p>
+                <div class="bg-amber-700 text-white p-4 rounded-xl w-16 shadow-lg animate-pulse">
+                    <span id="seconds" class="text-xl font-bold">00</span>
+                    <p class="text-[8px] uppercase font-light">Detik</p>
                 </div>
             </div>
         </section>
 
-        <section class="py-20 px-6 text-center bg-white">
-    <h2 class="text-3xl font-aesthetic text-amber-700 mb-8">Lokasi Acara</h2>
-    <div class="max-w-md mx-auto overflow-hidden rounded-3xl shadow-2xl border-4 border-white">
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.76566060411!2d114.5912345!3d-3.2981234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwMTcnNTMuMiJTIDExNMKwMzUnMjguNCJF!5e0!3m2!1sid!2sid!4v1600000000000!5m2!1sid!2sid" 
-            width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
-        </iframe>
-    </div>
-    <div class="mt-6">
-        <p class="text-sm font-bold text-stone-800">Gedung Pernikahan Impian</p>
-        <p class="text-xs text-stone-500 mb-6">Jl. Contoh Alamat No. 123, Kota Anda</p>
-        <a href="https://maps.google.com" target="_blank" class="bg-amber-700 text-white px-8 py-3 rounded-full text-xs font-bold tracking-widest shadow-lg">
-            BUKA GOOGLE MAPS
-        </a>
-    </div>
-</section>
-        
-        <section class="py-20 px-4 text-center">
-            <h2 class="text-4xl font-aesthetic text-amber-700 mb-10">Galeri Kebahagiaan</h2>
-            <div class="grid grid-cols-2 gap-2 max-w-md mx-auto">
-                <div class="bg-stone-200 h-40 rounded-lg flex items-center justify-center text-stone-400 italic">Foto 1</div>
-                <div class="bg-stone-200 h-40 rounded-lg flex items-center justify-center text-stone-400 italic">Foto 2</div>
-                <div class="bg-stone-200 h-40 rounded-lg flex items-center justify-center text-stone-400 italic text-xs">Upload fotomu nanti di sini</div>
-                <div class="bg-stone-200 h-40 rounded-lg flex items-center justify-center text-stone-400 italic">Foto 4</div>
+        <section class="py-20 px-6 text-center bg-stone-50">
+            <h2 class="text-3xl font-aesthetic text-amber-700 mb-8">Lokasi Acara</h2>
+            <div class="max-w-md mx-auto overflow-hidden rounded-3xl shadow-xl border-4 border-white">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2758872248566!2d106.819124!3d-6.227237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTMnMzguMSJTIDEwNiw0OScwOC44IkU!5e0!3m2!1sid!2sid!4v1625000000000" 
+                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
+            <p class="mt-4 text-sm font-bold">Gedung Pernikahan Impian</p>
+            <p class="text-xs text-stone-500">Jl. Cinta No. 123, Jakarta Selatan</p>
         </section>
 
         <section class="py-20 px-6 text-center bg-stone-100">
             <h2 class="text-3xl font-aesthetic text-amber-700 mb-6">Amplop Digital</h2>
             <div class="p-8 bg-white rounded-3xl shadow-xl max-w-sm mx-auto border-t-4 border-amber-700">
-                <p class="font-bold mb-2">BANK BCA</p>
-                <p class="text-2xl font-bold tracking-widest text-stone-800 mb-2">1234567890</p>
-                <p class="text-sm text-stone-500 mb-6 font-semibold uppercase">a/n Romeo Putra</p>
-                <button onclick="alert('Nomor rekening berhasil disalin!')" class="text-amber-700 text-xs font-bold border border-amber-700 px-4 py-2 rounded-full uppercase tracking-tighter">Salin Rekening</button>
+                <p class="font-bold mb-2 text-xs">BANK BCA</p>
+                <p class="text-xl font-bold tracking-widest text-stone-800 mb-2">1234567890</p>
+                <p class="text-[10px] text-stone-500 mb-6 font-semibold uppercase text-xs">a/n Romeo Putra</p>
+                <button onclick="alert('Nomor rekening berhasil disalin!')" class="text-amber-700 text-[10px] font-bold border border-amber-700 px-4 py-2 rounded-full uppercase">Salin Rekening</button>
             </div>
         </section>
 
         <section class="py-20 px-6 text-center">
             <h2 class="text-3xl font-aesthetic text-amber-700 mb-8">Konfirmasi Kehadiran</h2>
-            <div class="max-w-sm mx-auto space-y-4">
+            <div class="max-w-sm mx-auto space-y-4 text-sm">
                 <input type="text" id="nama" placeholder="Nama Lengkap" class="w-full p-4 rounded-xl border border-stone-300 focus:outline-amber-700 shadow-sm">
                 <select id="hadir" class="w-full p-4 rounded-xl border border-stone-300 focus:outline-amber-700 shadow-sm bg-white">
                     <option>Hadir</option>
                     <option>Tidak Bisa Hadir</option>
                 </select>
-                <button onclick="kirimWA()" class="w-full bg-green-600 text-white p-4 rounded-xl font-bold shadow-lg shadow-green-200">KIRIM RSVP KE WHATSAPP</button>
+                <button onclick="kirimWA()" class="w-full bg-green-600 text-white p-4 rounded-xl font-bold shadow-lg">KIRIM RSVP KE WHATSAPP</button>
             </div>
         </section>
 
@@ -123,75 +113,61 @@
     </audio>
 
     <script>
-        // Fungsi Buka Undangan
+        // 1. FUNGSI AMBIL NAMA DARI URL (?to=Nama)
+        function ambilNamaTamu() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const nama = urlParams.get('to');
+            if (nama) {
+                document.getElementById('nama-tamu').innerText = nama.replace(/[+|_]/g, ' ');
+            }
+        }
+
+        // 2. FUNGSI BUKA UNDANGAN & AUTO SCROLL
+        let isAutoScrolling = false;
         function bukaUndangan() {
             document.getElementById('halaman-sampul').style.display = 'none';
             document.getElementById('konten-utama').style.display = 'block';
             document.getElementById('musik').play().catch(e => console.log("Audio play blocked"));
             window.scrollTo(0, 0);
-        }
-
-        // Fungsi RSVP WhatsApp
-        function kirimWA() {
-            const nama = document.getElementById('nama').value;
-            const hadir = document.getElementById('hadir').value;
-            const pesan = `Halo, saya ${nama}. Saya konfirmasi akan ${hadir} di acara pernikahan Anda.`;
-            window.open(`https://wa.me/628123456789?text=${encodeURIComponent(pesan)}`);
-        }
-
-        // Fungsi Countdown (Hitung Mundur)
-        const target = new Date("Dec 12, 2026 08:00:00").getTime();
-        
-        setInterval(() => {
-            const skrg = new Date().getTime();
-            const sisa = target - skrg;
-
-            const d = Math.floor(sisa / (1000 * 60 * 60 * 24));
-            const h = Math.floor((sisa % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((sisa % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((sisa % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerText = d;
-            document.getElementById("hours").innerText = h;
-            document.getElementById("minutes").innerText = m;
-            document.getElementById("seconds").innerText = s;
-        }, 1000);
-    </script>
-    <script>
-        // SEMUA KODE JAVASCRIPT HARUS DI DALAM SINI
-        let isAutoScrolling = false;
-
-        function bukaUndangan() {
-            document.getElementById('halaman-sampul').style.display = 'none';
-            document.getElementById('konten-utama').style.display = 'block';
-            document.getElementById('musik').play().catch(e => console.log("Audio blocked"));
-            window.scrollTo(0, 0);
-            mulaiAutoScroll();
-        }
-
-        function mulaiAutoScroll() {
+            
+            // Jalankan auto scroll
             isAutoScrolling = true;
-            const speed = 0.5; 
-            function step() {
-                if (!isAutoScrolling) return;
-                window.scrollBy(0, speed);
-                if ((window.innerHeight + window.pageYOffset) < document.body.offsetHeight) {
-                    requestAnimationFrame(step);
-                }
-            }
-            setTimeout(step, 2000);
+            setTimeout(mulaiScroll, 2500); // Tunggu 2.5 detik baru jalan
         }
 
-        window.addEventListener('touchstart', () => { isAutoScrolling = false; });
-        window.addEventListener('wheel', () => { isAutoScrolling = false; });
+        function mulaiScroll() {
+            if (!isAutoScrolling) return;
+            window.scrollBy(0, 0.5); // Kecepatan pelan
+            if ((window.innerHeight + window.pageYOffset) < document.body.offsetHeight) {
+                requestAnimationFrame(mulaiScroll);
+            }
+        }
 
-        // Fungsi kirim WA yang lama juga taruh di sini ya
+        // Berhenti scroll jika disentuh tamu
+        window.addEventListener('touchstart', () => isAutoScrolling = false);
+        window.addEventListener('wheel', () => isAutoScrolling = false);
+
+        // 3. RSVP WHATSAPP
         function kirimWA() {
             const nama = document.getElementById('nama').value;
             const hadir = document.getElementById('hadir').value;
-            const pesan = `Halo, saya ${nama}. Saya konfirmasi akan ${hadir}.`;
+            if(!nama) { alert("Isi nama dulu ya"); return; }
+            const pesan = `Halo Romeo & Juliet, saya ${nama}. Saya konfirmasi akan ${hadir} di pernikahan kalian.`;
             window.open(`https://wa.me/628123456789?text=${encodeURIComponent(pesan)}`);
         }
-    </script> 
+
+        // 4. COUNTDOWN
+        const target = new Date("Dec 12, 2026 08:00:00").getTime();
+        setInterval(() => {
+            const sisa = target - new Date().getTime();
+            document.getElementById("days").innerText = Math.floor(sisa / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((sisa % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerText = Math.floor((sisa % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("seconds").innerText = Math.floor((sisa % (1000 * 60)) / 1000);
+        }, 1000);
+
+        // Jalankan deteksi nama saat loading
+        window.onload = ambilNamaTamu;
+    </script>
 </body>
 </html>
