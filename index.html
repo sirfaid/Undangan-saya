@@ -158,4 +158,34 @@
         }, 1000);
     </script>
 </body>
+    let isAutoScrolling = false;
+
+function bukaUndangan() {
+    // 1. Logika awal: Sembunyikan sampul dan putar musik
+    document.getElementById('halaman-sampul').style.display = 'none';
+    document.getElementById('konten-utama').style.display = 'block';
+    document.getElementById('musik').play().catch(e => console.log("Audio blocked"));
+    window.scrollTo(0, 0);
+    
+    // 2. Tambahan: Jalankan Auto-Scroll perlahan
+    mulaiAutoScroll();
+}
+
+function mulaiAutoScroll() {
+    isAutoScrolling = true;
+    const speed = 0.5; // Angka lebih kecil = lebih lambat/smooth
+    
+    function step() {
+        if (!isAutoScrolling) return;
+        window.scrollBy(0, speed);
+        if ((window.innerHeight + window.pageYOffset) < document.body.offsetHeight) {
+            requestAnimationFrame(step);
+        }
+    }
+    setTimeout(step, 2000); // Tunggu 2 detik baru mulai jalan sendiri
+}
+
+// Berhenti otomatis jika layar disentuh tamu
+window.addEventListener('touchstart', () => isAutoScrolling = false);
+window.addEventListener('wheel', () => isAutoScrolling = false);
 </html>
