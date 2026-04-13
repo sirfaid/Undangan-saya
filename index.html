@@ -10,60 +10,42 @@
     
     <style>
         .font-aesthetic { font-family: 'Great Vibes', cursive; }
-        body { font-family: 'Montserrat', sans-serif; }
+        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
         #konten-utama { display: none; }
         
-        /* Gaya Sampul dengan Background */
+        /* Sampul Background Full */
         #halaman-sampul {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80');
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80');
             background-size: cover;
             background-position: center;
         }
 
         /* Foto Arch (Lengkung) */
         .img-arch {
-            width: 150px;
-            height: 200px;
+            width: 160px; height: 220px;
             border-radius: 100px 100px 0 0;
             object-fit: cover;
             border: 4px solid white;
         }
 
-        /* Navigasi Bawah */
+        /* Navigasi Bawah (Floating Menu) */
         .nav-bottom {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 10px 20px;
-            border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 99;
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            display: flex; gap: 15px; background: rgba(255, 255, 255, 0.9);
+            padding: 12px 25px; border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 99; backdrop-filter: blur(5px);
         }
 
-        /* Tombol Musik di Kanan Bawah */
+        /* Tombol Musik */
         .music-control {
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: #b4975a;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 100;
-            animation: spin 4s linear infinite;
+            position: fixed; bottom: 90px; right: 20px;
+            width: 45px; height: 45px; background: #b4975a;
+            color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
-
+        .spinning { animation: spin 4s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
-        .paused { animation-play-state: paused; }
     </style>
 </head>
 <body class="bg-stone-50">
@@ -72,50 +54,95 @@
         <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=500&q=60" class="img-arch mb-6 shadow-2xl">
         
         <h2 class="tracking-[0.3em] uppercase mb-2 text-xs">The Wedding of</h2>
-        <h1 class="text-6xl font-aesthetic text-amber-200 mb-4">Rara & Adi</h1>
+        <h1 class="text-5xl font-aesthetic text-amber-200 mb-6">Rara & Adi</h1>
         
-        <div class="bg-white/20 backdrop-blur-sm p-4 rounded-xl mb-6 border border-white/30">
-            <p class="text-xs italic mb-1">Kepada Yth:</p>
-            <h3 id="nama-tamu" class="text-lg font-bold uppercase tracking-widest text-white">Budi & Ani</h3>
-            <p class="text-[10px] mt-1">di Bandung</p>
+        <div class="bg-black/30 backdrop-blur-sm p-5 rounded-2xl mb-8 border border-white/20">
+            <p class="text-[10px] italic mb-1 uppercase tracking-widest">Kepada Yth:</p>
+            <h3 id="nama-tamu" class="text-xl font-bold uppercase tracking-widest text-white">-</h3>
         </div>
 
-        <button onclick="bukaUndangan()" class="bg-amber-200 text-stone-800 px-8 py-3 rounded-full font-bold tracking-widest text-sm flex items-center gap-2 hover:scale-105 transition-all">
+        <button onclick="bukaUndangan()" class="bg-amber-200 text-stone-800 px-10 py-4 rounded-full font-bold tracking-widest text-sm flex items-center gap-2 shadow-xl hover:scale-105 transition-all">
             <i class="fa-solid fa-envelope-open"></i> BUKA UNDANGAN
         </button>
     </div>
 
-    <div id="music-btn" class="music-control hidden" onclick="toggleMusik()">
+    <div id="music-btn" class="music-control hidden spinning" onclick="toggleMusik()">
         <i id="music-icon" class="fa-solid fa-music"></i>
     </div>
 
     <div id="nav-menu" class="nav-bottom hidden">
-        <a href="#mempelai" class="text-stone-600 hover:text-amber-700"><i class="fa-solid fa-user-friends"></i></a>
-        <a href="#countdown" class="text-stone-600 hover:text-amber-700"><i class="fa-solid fa-calendar-days"></i></a>
-        <a href="#lokasi" class="text-stone-600 hover:text-amber-700"><i class="fa-solid fa-map-location-dot"></i></a>
-        <a href="#rsvp" class="text-stone-600 hover:text-amber-700"><i class="fa-solid fa-comment-dots"></i></a>
+        <a href="#mempelai" class="text-stone-600 active:text-amber-700"><i class="fa-solid fa-user-friends text-lg"></i></a>
+        <a href="#countdown" class="text-stone-600 active:text-amber-700"><i class="fa-solid fa-calendar-alt text-lg"></i></a>
+        <a href="#lokasi" class="text-stone-600 active:text-amber-700"><i class="fa-solid fa-map-marker-alt text-lg"></i></a>
+        <a href="#rsvp" class="text-stone-600 active:text-amber-700"><i class="fa-solid fa-envelope text-lg"></i></a>
     </div>
 
-    <div id="konten-utama" class="pb-24">
-        <section id="mempelai" class="py-20 text-center">
-            <h2 class="text-4xl font-aesthetic text-amber-700 mb-10">Mempelai</h2>
-            <p>Isi konten mempelai di sini...</p>
-        </section>
-
-        <section id="countdown" class="py-20 bg-white text-center">
-            <h2 class="text-xl font-bold mb-4">Senin, 31 Agustus 2026</h2>
-            <p>Isi hitung mundur di sini...</p>
-        </section>
-
-        <section id="lokasi" class="py-20 text-center">
-            <h2 class="text-3xl font-aesthetic text-amber-700">Lokasi</h2>
-            <p>Isi Maps di sini...</p>
-        </section>
+    <div id="konten-utama" class="pb-32">
         
-        <section id="rsvp" class="py-20 bg-white text-center">
-            <h2 class="text-3xl font-aesthetic text-amber-700">RSVP</h2>
-            <p>Isi Form di sini...</p>
+        <section id="mempelai" class="py-24 px-6 text-center">
+            <h2 class="text-4xl font-aesthetic text-amber-700 mb-10">Mempelai</h2>
+            <div class="space-y-10">
+                <div>
+                    <h3 class="text-2xl font-bold text-stone-800">Adi Putra</h3>
+                    <p class="text-stone-500 italic text-sm">Putra dari Bapak A & Ibu B</p>
+                </div>
+                <div class="text-3xl font-aesthetic text-amber-700">dengan</div>
+                <div>
+                    <h3 class="text-2xl font-bold text-stone-800">Rara Putri</h3>
+                    <p class="text-stone-500 italic text-sm">Putri dari Bapak C & Ibu D</p>
+                </div>
+            </div>
         </section>
+
+        <section id="countdown" class="py-16 bg-white text-center shadow-inner">
+            <h2 class="text-xl font-semibold mb-8 tracking-widest text-stone-500 uppercase text-xs">Menuju Hari Bahagia</h2>
+            <div class="flex justify-center gap-3">
+                <div class="bg-stone-800 text-white p-4 rounded-2xl w-16">
+                    <span id="days" class="text-xl font-bold">00</span>
+                    <p class="text-[8px] uppercase">Hari</p>
+                </div>
+                <div class="bg-stone-800 text-white p-4 rounded-2xl w-16">
+                    <span id="hours" class="text-xl font-bold">00</span>
+                    <p class="text-[8px] uppercase">Jam</p>
+                </div>
+                <div class="bg-stone-800 text-white p-4 rounded-2xl w-16">
+                    <span id="minutes" class="text-xl font-bold">00</span>
+                    <p class="text-[8px] uppercase">Menit</p>
+                </div>
+                <div class="bg-amber-700 text-white p-4 rounded-2xl w-16 animate-pulse">
+                    <span id="seconds" class="text-xl font-bold">00</span>
+                    <p class="text-[8px] uppercase">Detik</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="lokasi" class="py-24 px-6 text-center bg-stone-50">
+            <h2 class="text-4xl font-aesthetic text-amber-700 mb-8">Lokasi Acara</h2>
+            <div class="max-w-md mx-auto overflow-hidden rounded-3xl shadow-xl border-4 border-white mb-6">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.2!2d106.8!3d-6.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTInMDAuMCJTIDEwNsKwNDgnMDAuMCJF!5e0!3m2!1sid!2sid!4v1" 
+                    width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <p class="font-bold text-stone-800">Gedung Pernikahan Impian</p>
+            <p class="text-xs text-stone-500 mb-6">Jl. Kasih Sayang No. 123, Jakarta</p>
+            <a href="https://maps.google.com" target="_blank" class="bg-amber-700 text-white px-8 py-3 rounded-full text-[10px] font-bold tracking-widest uppercase">Buka Maps</a>
+        </section>
+
+        <section id="rsvp" class="py-24 px-6 text-center bg-white">
+            <h2 class="text-4xl font-aesthetic text-amber-700 mb-10">Konfirmasi Kehadiran</h2>
+            <div class="max-w-sm mx-auto space-y-4">
+                <input type="text" id="nama-input" placeholder="Nama Lengkap" class="w-full p-4 rounded-xl border border-stone-200 shadow-sm outline-amber-700 text-sm">
+                <select id="hadir-select" class="w-full p-4 rounded-xl border border-stone-200 shadow-sm bg-white text-sm">
+                    <option>Hadir</option>
+                    <option>Tidak Bisa Hadir</option>
+                </select>
+                <button onclick="kirimRSVP()" class="w-full bg-green-600 text-white p-4 rounded-xl font-bold shadow-lg">KIRIM KE WHATSAPP</button>
+            </div>
+        </section>
+
+        <footer class="py-10 text-center text-stone-400 text-[10px] tracking-widest uppercase">
+            Designed by Sirfaid Invitation
+        </footer>
+
     </div>
 
     <audio id="musik" loop>
@@ -123,31 +150,56 @@
     </audio>
 
     <script>
+        // 1. Fitur Nama Tamu dari URL (?to=Nama)
+        function deteksiNamaTamu() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const nama = urlParams.get('to');
+            document.getElementById('nama-tamu').innerText = nama ? nama.replace(/[+|_]/g, ' ') : "Tamu Undangan";
+        }
+
+        // 2. Kontrol Musik & Buka Undangan
         const audio = document.getElementById('musik');
-        const musicBtn = document.getElementById('music-btn');
-        const musicIcon = document.getElementById('music-icon');
+        let isAutoScrolling = false;
 
         function bukaUndangan() {
-            document.getElementById('halaman-sampul').classList.add('hidden');
+            document.getElementById('halaman-sampul').style.display = 'none';
             document.getElementById('konten-utama').style.display = 'block';
             document.getElementById('nav-menu').classList.remove('hidden');
             document.getElementById('music-btn').classList.remove('hidden');
             
-            audio.play();
+            audio.play().catch(e => console.log("Auto-play blocked"));
             window.scrollTo(0, 0);
+            
+            // Aktifkan Gerak Otomatis (Slow Scroll)
+            isAutoScrolling = true;
+            setTimeout(autoScroll, 2000);
         }
 
         function toggleMusik() {
             if (audio.paused) {
                 audio.play();
-                musicIcon.classList.replace('fa-play', 'fa-music');
-                musicBtn.classList.remove('paused');
+                document.getElementById('music-icon').className = 'fa-solid fa-music';
+                document.getElementById('music-btn').classList.add('spinning');
             } else {
                 audio.pause();
-                musicIcon.classList.replace('fa-music', 'fa-play');
-                musicBtn.classList.add('paused');
+                document.getElementById('music-icon').className = 'fa-solid fa-play';
+                document.getElementById('music-btn').classList.remove('spinning');
             }
         }
-    </script>
-</body>
-</html>
+
+        // 3. Fitur Gerak Sendiri (Auto Scroll)
+        function autoScroll() {
+            if (!isAutoScrolling) return;
+            window.scrollBy(0, 0.5); // 0.5 = sangat lambat
+            if ((window.innerHeight + window.pageYOffset) < document.body.offsetHeight) {
+                requestAnimationFrame(autoScroll);
+            }
+        }
+        window.addEventListener('touchstart', () => isAutoScrolling = false);
+
+        // 4. RSVP WhatsApp
+        function kirimRSVP() {
+            const nama = document.getElementById('nama-input').value;
+            const hadir = document.getElementById('hadir-select').value;
+            if(!nama) return alert("Silakan isi nama Anda");
+            window.open(`
