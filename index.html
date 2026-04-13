@@ -214,3 +214,24 @@
             const hadir = document.getElementById('hadir-select').value;
             if(!nama) return alert("Silakan isi nama Anda terlebih dahulu");
             const pesan = `Halo Rara & Adi, saya ${nama}. Saya ingin mengonfirmasi bahwa saya ${hadir} di acara pernikahan kalian.`;
+            window.open(`https://wa.me/628123456789?text=${encodeURIComponent(pesan)}`);
+        }
+
+        // 6. Countdown Timer
+        const targetDate = new Date("Aug 31, 2026 08:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const sisa = targetDate - now;
+            if (sisa > 0) {
+                document.getElementById("days").innerText = Math.floor(sisa / (1000 * 60 * 60 * 24));
+                document.getElementById("hours").innerText = Math.floor((sisa % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById("minutes").innerText = Math.floor((sisa % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById("seconds").innerText = Math.floor((sisa % (1000 * 60)) / 1000);
+            }
+        }, 1000);
+
+        // Jalankan saat halaman siap
+        window.onload = ambilNamaTamu;
+    </script>
+</body>
+</html>
