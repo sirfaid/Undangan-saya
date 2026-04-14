@@ -137,10 +137,10 @@
             <div class="bg-white p-8 rounded-3xl shadow-lg max-w-xs mx-auto text-center">
     <img src="logodana.jpg" class="h-10 mx-auto mb-4">
     
-    <p class="text-xl font-bold text-stone-800">0821 4997 1287</p>
-    <p class="text-[10px] text-stone-400 font-bold uppercase mb-4">a/n ADI PUTRA</p>
+    <p id="nomor-dana" class="text-xl font-bold text-stone-800">082149971287</p>
+    <p class="text-[10px] text-stone-400 font-bold uppercase mb-4">a/n Sirfa.id</p>
     
-    <button onclick="alert('Nomor Dana disalin!')" class="mt-2 text-[10px] border border-amber-700 text-amber-700 px-6 py-2 rounded-full font-bold">
+    <button onclick="salinNomor()" class="mt-2 text-[10px] border border-amber-700 text-amber-700 px-6 py-2 rounded-full font-bold active:bg-amber-700 active:text-white transition-all">
         SALIN NOMOR
     </button>
 </div>
@@ -194,7 +194,37 @@
             if ((window.innerHeight + window.pageYOffset) < document.body.offsetHeight) requestAnimationFrame(autoScroll);
         }
         window.addEventListener('touchstart', () => isAutoScrolling = false);
+function salinNomor() {
+    // Mengambil teks dari elemen dengan id 'nomor-dana'
+    const nomor = document.getElementById("nomor-dana").innerText;
 
+    // Menggunakan API Clipboard modern
+    if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(nomor).then(() => {
+            alert("Nomor Dana berhasil disalin: " + nomor);
+        }).catch(err => {
+            fallbackSalin(nomor);
+        });
+    } else {
+        // Gunakan cara lama jika browser tidak mendukung cara modern
+        fallbackSalin(nomor);
+    }
+}
+
+// Fungsi cadangan untuk browser HP yang agak lama
+function fallbackSalin(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+        document.execCommand('copy');
+        alert("Nomor Dana berhasil disalin: " + text);
+    } catch (err) {
+        alert("Gagal menyalin, silakan salin manual.");
+    }
+    document.body.removeChild(textArea);
+}
         function kirimRSVP() {
             const nama = document.getElementById('nama-input').value;
             const pesan = document.getElementById('pesan-input').value;
