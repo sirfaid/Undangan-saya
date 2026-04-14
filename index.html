@@ -10,72 +10,43 @@
     <style>
         .font-aesthetic { font-family: 'Great Vibes', cursive; }
         body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
-        
-        /* PERBAIKAN SAMPUL: Agar bisa di-scroll saat landscape */
         #halaman-sampul {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80');
-            background-size: cover; 
-            background-position: center;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 100;
+            background-size: cover; background-position: center;
         }
-
-        /* FOTO MELENGKUNG: Pastikan muncul dengan benar */
-        .img-arch { 
-            width: 160px; 
-            height: 220px; 
-            border-radius: 100px 100px 0 0; 
-            object-fit: cover; 
-            border: 4px solid white; 
-            display: block !important;
-            margin-bottom: 20px;
-        }
-
+        .img-arch { width: 160px; height: 220px; border-radius: 100px 100px 0 0; object-fit: cover; border: 4px solid white; }
         .nav-bottom {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
             display: flex; gap: 15px; background: rgba(255, 255, 255, 0.9);
             padding: 12px 25px; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 99;
         }
-
         .music-control {
             position: fixed; bottom: 90px; right: 20px; width: 45px; height: 45px;
             background: #b4975a; color: white; border-radius: 50%; display: flex;
             align-items: center; justify-content: center; z-index: 100;
         }
-
         .spinning { animation: spin 4s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
-        
         #konten-utama { display: none; }
-
         .chat-bubble { position: relative; background: #f3f4f6; padding: 15px; border-radius: 15px; margin-bottom: 10px; max-width: 80%; }
         .chat-bubble::after { content: ''; position: absolute; left: -10px; top: 10px; border-width: 10px; border-style: solid; border-color: transparent #f3f4f6 transparent transparent; }
     </style>
 </head>
 <body class="bg-stone-50">
 
-    <div id="halaman-sampul">
-        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=500&q=60" class="img-arch shadow-2xl">
-        <div class="text-white">
-            <h2 class="tracking-[0.3em] uppercase mb-2 text-[10px]">The Wedding of</h2>
-            <h1 class="text-5xl font-aesthetic text-amber-200 mb-2">Rara & Adi</h1>
-            <p class="text-xs tracking-[0.2em] mb-6">SENIN, 31 AGUSTUS 2026</p>
-            
-            <div class="bg-black/30 backdrop-blur-sm p-4 rounded-2xl mb-6 border border-white/20">
-                <p class="text-[10px] italic mb-1 uppercase">Kepada Yth:</p>
-                <h3 id="nama-tamu" class="text-lg font-bold uppercase tracking-widest text-white">Tamu Undangan</h3>
-            </div>
-            <button onclick="bukaUndangan()" class="bg-amber-200 text-stone-800 px-8 py-3 rounded-full font-bold tracking-widest text-xs flex items-center gap-2 shadow-xl active:scale-95 transition-all">
-                <i class="fa-solid fa-envelope-open"></i> BUKA UNDANGAN
-            </button>
+    <div id="halaman-sampul" class="fixed inset-0 z-[100] flex flex-col justify-center items-center text-center text-white p-6">
+        <img src="3.jpg" class="img-arch mb-4 shadow-2xl">
+        <h2 class="tracking-[0.3em] uppercase mb-2 text-[10px]">The Wedding of</h2>
+        <h1 class="text-5xl font-aesthetic text-amber-200 mb-2">Rara & Adi</h1>
+        <p class="text-xs tracking-[0.2em] mb-6">RABU, 15 APRIL 2026</p>
+        
+        <div class="bg-black/30 backdrop-blur-sm p-4 rounded-2xl mb-6 border border-white/20">
+            <p class="text-[10px] italic mb-1 uppercase">Kepada Yth:</p>
+            <h3 id="nama-tamu" class="text-lg font-bold uppercase tracking-widest text-white">Tamu Undangan</h3>
         </div>
+        <button onclick="bukaUndangan()" class="bg-amber-200 text-stone-800 px-8 py-3 rounded-full font-bold tracking-widest text-xs flex items-center gap-2 shadow-xl active:scale-95 transition-all">
+            <i class="fa-solid fa-envelope-open"></i> BUKA UNDANGAN
+        </button>
     </div>
 
     <div id="music-btn" class="music-control hidden spinning" onclick="toggleMusik()"><i id="music-icon" class="fa-solid fa-music"></i></div>
@@ -89,6 +60,7 @@
     </div>
 
     <div id="konten-utama">
+        
         <section id="salam" class="py-20 px-8 text-center bg-white">
             <div class="max-w-md mx-auto">
                 <p class="font-aesthetic text-3xl text-amber-700 mb-4">Assalamu'alaikum Wr. Wb.</p>
@@ -158,7 +130,7 @@
 
         <section id="lokasi" class="py-20 px-6">
             <div class="max-w-md mx-auto overflow-hidden rounded-3xl shadow-xl border-4 border-white mb-6">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.56347862248!2d107.573116!3d-6.903444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e63982542887%3A0xad6010040684af1!2sBandung%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1620000000000!5m2!1sen!2sid" width="100%" height="300" style="border:0;" allowfullscreen=""></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15843.14!2d107.6!3d-6.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTQnMDAuMCJTIDEwN8KwMzYnMDAuMCJF!5e0!3m2!1sid!2sid!4v1" width="100%" height="300" style="border:0;" allowfullscreen=""></iframe>
             </div>
             <div class="text-center"><a href="#" class="inline-block bg-amber-700 text-white px-8 py-3 rounded-full text-[10px] font-bold">PETUNJUK LOKASI</a></div>
         </section>
@@ -200,19 +172,12 @@
         let isAutoScrolling = false;
 
         function bukaUndangan() {
-            // Hilangkan sampul
             document.getElementById('halaman-sampul').style.display = 'none';
-            // Munculkan isi
             document.getElementById('konten-utama').style.display = 'block';
             document.getElementById('nav-menu').classList.remove('hidden');
             document.getElementById('music-btn').classList.remove('hidden');
-            
-            // Putar musik
-            audio.play().catch(e => console.log("Audio play blocked"));
-            
+            audio.play();
             window.scrollTo(0, 0);
-            
-            // Jalankan autoscroll pelan
             isAutoScrolling = true;
             setTimeout(autoScroll, 2000);
         }
@@ -227,10 +192,7 @@
             window.scrollBy(0, 0.5);
             if ((window.innerHeight + window.pageYOffset) < document.body.offsetHeight) requestAnimationFrame(autoScroll);
         }
-        
-        // Hentikan autoscroll jika layar disentuh
         window.addEventListener('touchstart', () => isAutoScrolling = false);
-        window.addEventListener('wheel', () => isAutoScrolling = false);
 
         function kirimRSVP() {
             const nama = document.getElementById('nama-input').value;
