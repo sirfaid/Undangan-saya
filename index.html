@@ -8,6 +8,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Aturan untuk hiasan yang baru kamu tempel */
+.hiasan-halaman {
+    position: absolute;
+    width: 80px; /* Ukuran hiasan */
+    opacity: 0.3; /* Transparansi agar tidak menutupi teks */
+    pointer-events: none;
+    z-index: 50; /* Supaya berada di atas background section */
+}
+
+/* Mengatur sebaran posisi hiasan di sepanjang halaman */
+.posisi-1 { top: 500px; left: -10px; }
+.posisi-2 { top: 1500px; right: -10px; transform: scaleX(-1); }
+.posisi-3 { top: 2500px; left: -10px; }
+.posisi-4 { top: 3500px; right: -10px; transform: scaleX(-1); }
         /* Hiasan Samping (Absolute) */
 .hiasan-samping {
     position: absolute;
@@ -102,10 +116,10 @@
 
     <div id="konten-utama">
         
-    <img src="1.png" class="hiasan-halaman posisi-1 reveal">
-    <img src="2.png" class="hiasan-halaman posisi-2 reveal">
-    <img src="1.png" class="hiasan-halaman posisi-3 reveal">
-    <img src="2.png" class="hiasan-halaman posisi-4 reveal">
+    <img src="1.jpg" class="hiasan-halaman posisi-1 reveal">
+    <img src="2.jpg" class="hiasan-halaman posisi-2 reveal">
+    <img src="1.jpg" class="hiasan-halaman posisi-3 reveal">
+    <img src="2.jpg" class="hiasan-halaman posisi-4 reveal">
 
         <section id="salam" class="py-20 px-8 text-center bg-white">
             <div class="max-w-md mx-auto">
