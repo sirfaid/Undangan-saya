@@ -8,6 +8,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* Animasi muncul dari bawah */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hiasan Pojok Khas Banjar (Simulasi) */
+.ornamen-banjar {
+    position: absolute;
+    width: 80px;
+    opacity: 0.3;
+    pointer-events: none;
+}
         .font-aesthetic { font-family: 'Great Vibes', cursive; }
         body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
         #halaman-sampul {
@@ -33,24 +51,6 @@
     </style>
 </head>
 <body class="bg-stone-50">
-/* Animasi muncul dari bawah */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s ease-out;
-}
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Hiasan Pojok Khas Banjar (Simulasi) */
-.ornamen-banjar {
-    position: absolute;
-    width: 80px;
-    opacity: 0.3;
-    pointer-events: none;
-}
     <div id="halaman-sampul" class="fixed inset-0 z-[100] flex flex-col justify-center items-center text-center text-white p-6">
         <img src="3.jpg" class="img-arch mb-4 shadow-2xl">
         <h2 class="tracking-[0.3em] uppercase mb-2 text-[10px]">The Wedding of</h2>
