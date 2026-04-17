@@ -8,48 +8,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Mengatur ukuran dan sifat dasar hiasan */
+        /* Aturan Hiasan Baru (Menempel Pojok) */
 .hiasan-halaman {
     position: absolute;
-    width: 100px; /* Ubah angka ini jika ingin lebih besar, misal 120px */
-    opacity: 0.4;
+    width: 140px; 
+    opacity: 0.7;
     pointer-events: none;
-    z-index: 100; /* Supaya berada di depan latar belakang */
+    z-index: 10;
 }
+.pojok-kiri-atas { top: 0; left: 0; }
+.pojok-kanan-bawah { bottom: 0; right: 0; transform: rotate(180deg); }
 
-/* Mengatur agar hiasan tersebar dari atas ke bawah */
-.posisi-1 { top: 100px; left: -20px; }
-.posisi-2 { top: 1000px; right: -20px; transform: scaleX(-1); }
-.posisi-3 { top: 2000px; left: -20px; }
-.posisi-4 { top: 3000px; right: -20px; transform: scaleX(-1); }
-        /* Aturan untuk hiasan yang baru kamu tempel */
-.hiasan-halaman {
-    position: absolute;
-    width: 80px; /* Ukuran hiasan */
-    opacity: 0.3; /* Transparansi agar tidak menutupi teks */
-    pointer-events: none;
-    z-index: 50; /* Supaya berada di atas background section */
-}
-
-/* Mengatur sebaran posisi hiasan di sepanjang halaman */
-.posisi-1 { top: 500px; left: -10px; }
-.posisi-2 { top: 1500px; right: -10px; transform: scaleX(-1); }
-.posisi-3 { top: 2500px; left: -10px; }
-.posisi-4 { top: 3500px; right: -10px; transform: scaleX(-1); }
-        /* Hiasan Samping (Absolute) */
-.hiasan-samping {
-    position: absolute;
-    width: 100px; /* Atur besar hiasan */
-    opacity: 0.3; /* Tipis saja agar tidak menutupi teks */
-    pointer-events: none;
-    z-index: 0; /* Di bawah teks */
-}
-
-/* Atur posisi pojok */
-.kiri-atas { top: 10px; left: -10px; }
-.kanan-bawah { bottom: 10px; right: -10px; transform: scaleX(-1); }
-
-/* Pastikan section-nya 'relatif' agar hiasan tidak lari */
+section { position: relative; overflow: hidden; }
+ /* Pastikan section-nya 'relatif' agar hiasan tidak lari */
 .section-hiasan {
     position: relative;
     overflow: hidden; /* Supaya hiasan yang keluar batas tidak bikin scroll samping */
@@ -130,12 +101,9 @@
 
     <div id="konten-utama">
         
-    <img src="kiriatas.jpg" class="hiasan-halaman posisi-1">
-    <img src=".jpg" class="hiasan-halaman posisi-2">
-    <img src="kiribawah.jpg" class="hiasan-halaman posisi-3">
-    <img src="kananbawah.jpg" class="hiasan-halaman posisi-4">
-
         <section id="salam" class="py-20 px-8 text-center bg-white">
+            <img src="kiriatas.jpg" class="hiasan-halaman pojok-kiri-atas">
+<img src="kananbawah.jpg" class="hiasan-halaman pojok-kanan-bawah">
             <div class="max-w-md mx-auto">
                 <p class="font-aesthetic text-3xl text-amber-700 mb-4">Assalamu'alaikum Wr. Wb.</p>
                 <p class="text-xs leading-relaxed text-stone-600 mb-8 italic">"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya..." (QS. Ar-Rum: 21)</p>
