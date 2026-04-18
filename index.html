@@ -8,22 +8,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Aturan Hiasan Baru (Menempel Pojok) */
+        /* Menggunakan nilai negatif agar gambar menempel ke pojok layar */
+.pojok-kiri-atas { 
+    top: 0; 
+    left: 0; 
+}
+
+.pojok-kanan-bawah { 
+    bottom: 0 !important; 
+    right: 0 !important;
+}
+
+/* Pastikan hiasan mengabaikan padding section */
 .hiasan-halaman {
     position: absolute;
     width: 140px; 
     opacity: 0.7;
     pointer-events: none;
-    z-index: 2;
+    z-index: 0; /* Ubah ke 0 agar terlihat tapi di bawah teks */
 }
-.pojok-kiri-atas { top: 0; left: 0; }
-.pojok-kanan-bawah { bottom: 0; right: 0; }
 
-section { position: relative; overflow: hidden; }
- /* Pastikan section-nya 'relatif' agar hiasan tidak lari */
-.section-hiasan {
-    position: relative;
-    overflow: hidden; /* Supaya hiasan yang keluar batas tidak bikin scroll samping */
 }
         .gigi-haruan {
     width: 100%;
@@ -218,7 +222,7 @@ section { position: relative; overflow: hidden; }
             </div>
     </div>
 </section>
-    <section class="py-20 px-6 text-center bg-stone-100">
+    <section class="py-20 px-6 text-center bg-stone-100 relative">
     <img src="kiriatas.png" class="hiasan-halaman pojok-kiri-atas">
     <img src="kananbawah.png" class="hiasan-halaman pojok-kanan-bawah">
 
