@@ -8,31 +8,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Update bagian section agar lebih spesifik */
+        /* 1. Kunci Halaman Sampul agar Foto Muncul Lagi */
+#halaman-sampul {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('1.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. Aturan Bunga Otomatis (Hanya untuk isi undangan) */
 section {
     position: relative;
     overflow: hidden;
-    background-color: white; /* Memastikan background tidak transparan */
+    background-color: white;
     background-image: url('kiriatas.png'), url('kananbawah.png');
     background-position: top left, bottom right;
     background-repeat: no-repeat, no-repeat;
     background-size: 120px, 120px;
 }
 
-/* Memperbaiki Halaman Sampul agar tidak hancur/tembus */
-#halaman-sampul {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('1.jpg') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-image: none !important; /* Mencegah bunga muncul di sampul */
-    z-index: 9999;
-}
-
-/* Mematikan bunga di bagian bawah agar tidak menumpuk di footer */
-#rsvp, footer {
+/* 3. Matikan Bunga di Sampul & Footer (Agar tidak tumpuk) */
+#halaman-sampul, #rsvp, footer {
     background-image: none !important;
 }
 
+/* 4. Pastikan teks sampul terbaca (Putih) */
+#halaman-sampul h1, #halaman-sampul h2, #halaman-sampul p {
+    color: white !important;
+}
+#halaman-sampul h1 {
+    color: #fde68a !important; /* Warna Amber/Kuning lembut untuk nama */
+}
         .gigi-haruan {
     width: 100%;
     height: 15px;
