@@ -378,7 +378,6 @@ window.addEventListener('load', () => {
         elemenNama.innerText = "Tamu Undangan";
     }
 }
-
 // Jalankan langsung saat script terbaca
 ambilNamaTamu();
 
@@ -403,11 +402,32 @@ ambilNamaTamu();
             else { audio.pause(); document.getElementById('music-btn').classList.remove('spinning'); }
         }
 
-        function autoScroll() {
-            if (!isAutoScrolling) return;
-            window.scrollBy(0, 0.5);
-            if ((window.innerHeight + window.pageYOffset) < document.body.offsetHeight) requestAnimationFrame(autoScroll);
-        }
+        // Tambahkan fungsi baru untuk tombol navigasi
+function toggleAutoScroll() {
+    isAutoScrolling = !isAutoScrolling;
+    const scrollIcon = document.getElementById('scroll-icon');
+    const scrollBtn = document.getElementById('scroll-btn');
+
+    if (isAutoScrolling) {
+        scrollBtn.classList.add('animate-bounce'); // Efek gerak saat aktif
+        autoScroll();
+    } else {
+        scrollBtn.classList.remove('animate-bounce');
+    }
+}
+
+// Perbaiki fungsi autoScroll agar lebih halus
+function autoScroll() {
+    if (!isAutoScrolling) return;
+    window.scrollBy(0, 1); // Kecepatan scroll (1 adalah normal)
+    if ((window.innerHeight + window.pageYOffset) < document.body.offsetHeight) {
+        requestAnimationFrame(autoScroll);
+    } else {
+        isAutoScrolling = false; // Berhenti kalau sudah sampai paling bawah
+        document.getElementById('scroll-btn').classList.remove('animate-bounce');
+    }
+}
+
         window.addEventListener('touchstart', () => isAutoScrolling = false);
 function salinNomor() {
     // Mengambil teks dari elemen dengan id 'nomor-dana'
