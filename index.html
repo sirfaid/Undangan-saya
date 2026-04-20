@@ -15,25 +15,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-  /* Lapasan background tekstur */
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #fffcf5; /* Warna dasar krem */
-    position: relative;
-}
-
-body::after {
+        body::before {
     content: "";
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Kita pakai tekstur yang lebih gelap supaya pasti kelihatan */
-    background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png'); 
-    opacity: 0.05; /* Angka kecil (0.05) supaya seratnya samar dan mewah */
-    z-index: -1; /* Ini kuncinya: diletakkan di belakang semua konten */
+    /* Gunakan tekstur yang kontras agar terlihat */
+    background-image: url('https://www.transparenttextures.com/patterns/pinstriped-suit.png');
+    /* Kuncinya di sini: Multiply menyatukan tekstur ke warna di bawahnya */
+    mix-blend-mode: multiply; 
+    opacity: 0.1; /* Naikkan ke 0.2 atau 0.3 jika masih kurang kelihatan */
+    z-index: 9999;
     pointer-events: none;
 }
         /* Animasi Bergerak Naik Turun Pelan */
