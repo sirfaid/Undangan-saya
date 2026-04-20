@@ -15,14 +15,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body::before {
+       body::before {
     content: "";
     position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png'); /* Contoh tekstur */
-    opacity: 0.3;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    /* Menggunakan tekstur yang lebih jelas seratnya */
+    background-image: url('https://www.transparenttextures.com/patterns/pinstriped-suit.png'); 
+    opacity: 0.15; /* Atur tipis saja agar tetap elegan */
     pointer-events: none;
     z-index: 9999;
+    mix-blend-mode: multiply; /* Ini kunci agar tekstur menyatu dengan warna background */
 }
         /* Animasi Bergerak Naik Turun Pelan */
 @keyframes float {
