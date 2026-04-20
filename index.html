@@ -406,12 +406,6 @@ ambilNamaTamu();
             else { audio.pause(); document.getElementById('music-btn').classList.remove('spinning'); }
         }
 
-        
-    const scrollIcon = document.getElementById('scroll-icon');
-    if(scrollIcon) scrollIcon.classList.replace('fa-pause', 'fa-play');
-});
-
-        window.addEventListener('touchstart', () => isAutoScrolling = false);
 function salinNomor() {
     // Mengambil teks dari elemen dengan id 'nomor-dana'
     const nomor = document.getElementById("nomor-dana").innerText;
