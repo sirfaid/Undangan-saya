@@ -107,6 +107,10 @@
         <div class="bg-black/30 backdrop-blur-sm p-4 rounded-2xl mb-6 border border-white/20">
             <p class="text-[10px] italic mb-1 uppercase">Kepada Yth:</p>
             <h3 id="nama-tamu" class="text-lg font-bold uppercase tracking-widest text-white">Tamu Undangan</h3>
+        </div>
+        <button onclick="toggleAutoScroll()" id="scroll-btn" class="text-amber-700">
+    <i id="scroll-icon" class="fa-solid fa-pause text-xs"></i>
+</button>
         <button onclick="bukaUndangan()" class="bg-amber-200 text-stone-800 px-8 py-3 rounded-full font-bold tracking-widest text-xs flex items-center gap-2 shadow-xl active:scale-95 transition-all">
             <i class="fa-solid fa-envelope-open"></i> BUKA UNDANGAN
         </button>
@@ -120,9 +124,6 @@
         <a href="#lokasi" class="text-stone-600"><i class="fa-solid fa-map-location-dot"></i></a>
         <a href="#galeri" class="text-stone-600"><i class="fa-solid fa-image text-lg"></i></a>
         <a href="#rsvp" class="text-stone-600"><i class="fa-solid fa-envelope text-lg"></i></a>
-        <button onclick="toggleAutoScroll()" id="scroll-btn" class="text-amber-700 ml-1">
-        <i id="scroll-icon" class="fa-solid fa-pause text-xs"></i>
-    </button>
     </div>
 
     <div id="konten-utama">
@@ -404,40 +405,38 @@ ambilNamaTamu();
             else { audio.pause(); document.getElementById('music-btn').classList.remove('spinning'); }
         }
 
-        // Fungsi Saklar Play/Pause
+        // Tambahkan fungsi baru untuk tombol navigasi
 function toggleAutoScroll() {
     isAutoScrolling = !isAutoScrolling;
     const scrollIcon = document.getElementById('scroll-icon');
+    const scrollBtn = document.getElementById('scroll-btn');
+
+    if (isAutoScrolling) {
+        scrollBtn.classList.add('animate-bounce'); // Efek gerak saat aktif
+        autoScroll();
+    } else {
+        scrollBtn.classList.remove('animate-bounce');
+    }
+}
+// Fungsi untuk tombol Play/Pause di navigasi
+function toggleAutoScroll() {
+    isAutoScrolling = !isAutoScrolling; // Membalikkan status (true jadi false, vice versa)
+    const scrollIcon = document.getElementById('scroll-icon');
     
     if (isAutoScrolling) {
+        // Jika aktif, ganti ikon jadi PAUSE dan jalankan scroll
         scrollIcon.classList.replace('fa-play', 'fa-pause');
         autoScroll();
     } else {
+        // Jika mati, ganti ikon jadi PLAY
         scrollIcon.classList.replace('fa-pause', 'fa-play');
     }
 }
 
-// Fungsi Pergerakan Layar
+// Fungsi inti pergerakan scroll
 function autoScroll() {
+    // Jika status false, maka berhenti
     if (!isAutoScrolling) return;
-
-    window.scrollBy(0, 0.6); // Kecepatan pelan (0.6)
-    
-    if ((window.innerHeight + window.pageYOffset) < document.body.offsetHeight) {
-        requestAnimationFrame(autoScroll);
-    } else {
-        isAutoScrolling = false;
-        const scrollIcon = document.getElementById('scroll-icon');
-        if(scrollIcon) scrollIcon.classList.replace('fa-pause', 'fa-play');
-    }
-}
-
-// Berhenti jika layar disentuh jari
-window.addEventListener('touchstart', () => {
-    isAutoScrolling = false;
-    const scrollIcon = document.getElementById('scroll-icon');
-    if(scrollIcon) scrollIcon.classList.replace('fa-pause', 'fa-play');
-});
 
     window.scrollBy(0, 0.6); // Angka 0.6 adalah kecepatan (bisa kamu ganti 1.0 jika mau lebih cepat)
     
