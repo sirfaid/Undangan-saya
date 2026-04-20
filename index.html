@@ -345,24 +345,36 @@ window.addEventListener('load', () => {
 });
 
         function ambilNamaTamu() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const nama = urlParams.get('to');
-            if (nama) document.getElementById('nama-tamu').innerText = nama.replace(/[+|_]/g, ' ');
-        }
+    const urlParams = new URLSearchParams(window.location.search);
+    const nama = urlParams.get('to');
+    const elemenNama = document.getElementById('nama-tamu');
+    
+    if (nama) {
+        // decodeURIComponent gunanya agar karakter seperti %20 atau + jadi spasi normal
+        elemenNama.innerText = decodeURIComponent(nama.replace(/\+/g, ' '));
+    } else {
+        elemenNama.innerText = "Tamu Undangan";
+    }
+}
+
+// Jalankan langsung saat script terbaca
+ambilNamaTamu();
+
 
         const audio = document.getElementById('musik');
         let isAutoScrolling = false;
 
         function bukaUndangan() {
-            document.getElementById('halaman-sampul').style.display = 'none';
-            document.getElementById('konten-utama').style.display = 'block';
-            document.getElementById('nav-menu').classList.remove('hidden');
-            document.getElementById('music-btn').classList.remove('hidden');
-            audio.play();
-            window.scrollTo(0, 0);
-            isAutoScrolling = true;
-            setTimeout(autoScroll, 2000);
-        }
+    ambilNamaTamu(); // Tambahkan baris ini di paling atas
+    document.getElementById('halaman-sampul').style.display = 'none';
+    document.getElementById('konten-utama').style.display = 'block';
+    document.getElementById('nav-menu').classList.remove('hidden');
+    document.getElementById('music-btn').classList.remove('hidden');
+    audio.play();
+    window.scrollTo(0, 0);
+    isAutoScrolling = true;
+    setTimeout(autoScroll, 2000);
+}
 
         function toggleMusik() {
             if (audio.paused) { audio.play(); document.getElementById('music-btn').classList.add('spinning'); }
