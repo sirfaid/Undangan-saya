@@ -122,6 +122,9 @@
         <a href="#lokasi" class="text-stone-600"><i class="fa-solid fa-map-location-dot"></i></a>
         <a href="#galeri" class="text-stone-600"><i class="fa-solid fa-image text-lg"></i></a>
         <a href="#rsvp" class="text-stone-600"><i class="fa-solid fa-envelope text-lg"></i></a>
+        <button onclick="toggleAutoScroll()" id="scroll-btn" class="text-amber-700">
+    <i id="scroll-icon" class="fa-solid fa-pause text-xs"></i>
+</button>
     </div>
 
     <div id="konten-utama">
@@ -403,55 +406,7 @@ ambilNamaTamu();
             else { audio.pause(); document.getElementById('music-btn').classList.remove('spinning'); }
         }
 
-        // Tambahkan fungsi baru untuk tombol navigasi
-function toggleAutoScroll() {
-    isAutoScrolling = !isAutoScrolling;
-    const scrollIcon = document.getElementById('scroll-icon');
-    const scrollBtn = document.getElementById('scroll-btn');
-
-    if (isAutoScrolling) {
-        scrollBtn.classList.add('animate-bounce'); // Efek gerak saat aktif
-        autoScroll();
-    } else {
-        scrollBtn.classList.remove('animate-bounce');
-    }
-}
-// Fungsi untuk tombol Play/Pause di navigasi
-function toggleAutoScroll() {
-    isAutoScrolling = !isAutoScrolling; // Membalikkan status (true jadi false, vice versa)
-    const scrollIcon = document.getElementById('scroll-icon');
-    
-    if (isAutoScrolling) {
-        // Jika aktif, ganti ikon jadi PAUSE dan jalankan scroll
-        scrollIcon.classList.replace('fa-play', 'fa-pause');
-        autoScroll();
-    } else {
-        // Jika mati, ganti ikon jadi PLAY
-        scrollIcon.classList.replace('fa-pause', 'fa-play');
-    }
-}
-
-// Fungsi inti pergerakan scroll
-function autoScroll() {
-    // Jika status false, maka berhenti
-    if (!isAutoScrolling) return;
-
-    window.scrollBy(0, 0.6); // Angka 0.6 adalah kecepatan (bisa kamu ganti 1.0 jika mau lebih cepat)
-    
-    // Cek apakah sudah sampai paling bawah halaman
-    if ((window.innerHeight + window.pageYOffset) < document.body.offsetHeight) {
-        requestAnimationFrame(autoScroll);
-    } else {
-        // Jika sudah mentok bawah, matikan otomatis
-        isAutoScrolling = false;
-        const scrollIcon = document.getElementById('scroll-icon');
-        if(scrollIcon) scrollIcon.classList.replace('fa-pause', 'fa-play');
-    }
-}
-
-// Tambahan: Jika layar disentuh manual, auto scroll akan berhenti otomatis
-window.addEventListener('touchstart', () => {
-    isAutoScrolling = false;
+        
     const scrollIcon = document.getElementById('scroll-icon');
     if(scrollIcon) scrollIcon.classList.replace('fa-pause', 'fa-play');
 });
@@ -473,7 +428,40 @@ function salinNomor() {
         fallbackSalin(nomor);
     }
 }
+// Fungsi Saklar Play/Pause
+function toggleAutoScroll() {
+    isAutoScrolling = !isAutoScrolling;
+    const scrollIcon = document.getElementById('scroll-icon');
+    
+    if (isAutoScrolling) {
+        scrollIcon.classList.replace('fa-play', 'fa-pause');
+        autoScroll();
+    } else {
+        scrollIcon.classList.replace('fa-pause', 'fa-play');
+    }
+}
 
+// Fungsi Pergerakan Layar
+function autoScroll() {
+    if (!isAutoScrolling) return;
+
+    window.scrollBy(0, 0.6); // Kecepatan pelan (0.6)
+    
+    if ((window.innerHeight + window.pageYOffset) < document.body.offsetHeight) {
+        requestAnimationFrame(autoScroll);
+    } else {
+        isAutoScrolling = false;
+        const scrollIcon = document.getElementById('scroll-icon');
+        if(scrollIcon) scrollIcon.classList.replace('fa-pause', 'fa-play');
+    }
+}
+
+// Berhenti jika layar disentuh jari
+window.addEventListener('touchstart', () => {
+    isAutoScrolling = false;
+    const scrollIcon = document.getElementById('scroll-icon');
+    if(scrollIcon) scrollIcon.classList.replace('fa-pause', 'fa-play');
+});
 // Fungsi cadangan untuk browser HP yang agak lama
 function fallbackSalin(text) {
     const textArea = document.createElement("textarea");
