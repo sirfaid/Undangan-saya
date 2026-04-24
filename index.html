@@ -135,7 +135,7 @@
         <h3 class="font-aesthetic text-4xl text-amber-700 mb-12 tracking-wide leading-relaxed">
             Assalamu'alaikum Wr. Wb.
         </h3>
-                <p class="text-2xl text-stone-800 mb-6 leading-[2.5] drop-shadow-sm" style="font-family: 'Amiri', serif; dir="rtl">
+                <p class="text-2xl text-stone-800 mb-6 leading-[2.5] drop-shadow-sm" style="font-family: 'Amiri', serif;" dir="rtl">
             وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
         </p>
 <p class="text-xs leading-relaxed text-stone-600 mb-8 italic">
@@ -346,7 +346,6 @@
     <script>
         // Ganti bagian ini dengan link yang kamu dapatkan tadi
 const scriptURL = 'https://script.google.com/macros/s/AKfycbwGbkYRh5zMYmzxTix5R7iiPWlSNvrkpGsGQPhemtMIMk948B0x05SG6AQEJVQl0GzELA/exec';
-
 function kirimKeSheets() {
     const btn = document.getElementById('btn-kirim');
     const nama = document.getElementById('nama-input').value;
@@ -358,7 +357,6 @@ function kirimKeSheets() {
     btn.disabled = true;
     btn.innerText = "Mengirim...";
 
-    // Mengirim data ke Google Sheets
     fetch(scriptURL, {
         method: 'POST',
         body: JSON.stringify({ "nama": nama, "ucapan": ucapan, "kehadiran": hadir })
@@ -368,20 +366,21 @@ function kirimKeSheets() {
         btn.disabled = false;
         btn.innerText = "KIRIM UCAPAN";
         
+        // Membersihkan form tanpa reload halaman
+        document.getElementById('nama-input').value = "";
+        document.getElementById('pesan-input').value = "";
+        
+        // Memperbarui daftar ucapan secara otomatis
+        muatUcapan(); 
+    })
     .catch(error => {
         console.error('Error!', error.message);
+        alert("Gagal mengirim pesan, coba lagi nanti.");
         btn.disabled = false;
         btn.innerText = "KIRIM UCAPAN";
     });
 }
-    // Hapus baris location.reload(); agar tidak balik ke sampul
-    // Sebagai gantinya, kosongkan saja kotaknya:
-    document.getElementById('nama-input').value = "";
-    document.getElementById('pesan-input').value = "";
-    
-    // Panggil kembali fungsi muat ucapan agar ucapan baru langsung muncul
-    muatUcapan(); 
-})
+
 // Fungsi untuk mengambil data dari Sheets dan menampilkannya di undangan
 function muatUcapan() {
     fetch(scriptURL)
