@@ -285,18 +285,52 @@
     </div>
 </section>
     <section class="py-20 px-6 text-center bg-[#fffcf5]">
-            <h2 class="text-4xl font-aesthetic text-amber-700 mb-10">Kado Digital</h2>
-            <div class="bg-white p-8 rounded-3xl shadow-lg max-w-xs mx-auto text-center reveal">
-    <img src="logodana.jpg" class="h-10 mx-auto mb-4">
-    
-    <p id="nomor-dana" class="text-xl font-bold text-stone-800">082149971287</p>
-    <p class="text-[10px] text-stone-400 font-bold uppercase mb-4">a/n Sirfa.id</p>
-    
-    <button onclick="salinNomor()" class="mt-2 text-[10px] border border-amber-700 text-amber-700 px-6 py-2 rounded-full font-bold active:bg-amber-700 active:text-white transition-all">
-        SALIN NOMOR
-    </button>
-</div>
-        </section>
+    <h2 class="text-4xl font-aesthetic text-amber-700 mb-2">Kado Digital</h2>
+    <p class="text-[10px] text-stone-500 mb-10 tracking-[0.2em] uppercase px-4">Doa restu Anda adalah kado terindah, namun jika ingin memberi lebih, kami sediakan sarana di bawah ini:</p>
+
+    <div class="grid grid-cols-2 gap-3 max-w-md mx-auto reveal">
+        
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-amber-100 flex flex-col justify-between">
+            <div>
+                <img src="logomandiri.jpg" class="h-5 mx-auto mb-3 object-contain grayscale hover:grayscale-0 transition-all">
+                <p class="text-[10px] text-stone-400 font-bold uppercase">Mandiri</p>
+                <p class="text-[13px] font-bold text-stone-800 my-1">1234567890</p>
+                <p class="text-[9px] text-stone-500 mb-3 leading-tight">a/n Sirajuddin</p>
+            </div>
+            <button onclick="salinTeks('1234567890', 'Mandiri')" class="text-[9px] border border-amber-700 text-amber-700 py-1.5 rounded-full font-bold active:bg-amber-700 active:text-white transition-all">SALIN</button>
+        </div>
+
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-amber-100 flex flex-col justify-between">
+            <div>
+                <img src="logobca.jpg" class="h-5 mx-auto mb-3 object-contain grayscale hover:grayscale-0 transition-all">
+                <p class="text-[10px] text-stone-400 font-bold uppercase">BCA</p>
+                <p class="text-[13px] font-bold text-stone-800 my-1">0987654321</p>
+                <p class="text-[9px] text-stone-500 mb-3 leading-tight">a/n Aulia Rahmah</p>
+            </div>
+            <button onclick="salinTeks('0987654321', 'BCA')" class="text-[9px] border border-amber-700 text-amber-700 py-1.5 rounded-full font-bold active:bg-amber-700 active:text-white transition-all">SALIN</button>
+        </div>
+
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-amber-100 flex flex-col justify-between">
+            <div>
+                <img src="logodana.jpg" class="h-5 mx-auto mb-3 object-contain grayscale hover:grayscale-0 transition-all">
+                <p class="text-[10px] text-stone-400 font-bold uppercase">DANA</p>
+                <p class="text-[13px] font-bold text-stone-800 my-1">082149971287</p>
+                <p class="text-[9px] text-stone-500 mb-3 leading-tight">a/n Sirajuddin</p>
+            </div>
+            <button onclick="salinTeks('082149971287', 'DANA')" class="text-[9px] border border-amber-700 text-amber-700 py-1.5 rounded-full font-bold active:bg-amber-700 active:text-white transition-all">SALIN</button>
+        </div>
+
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-amber-100 flex flex-col justify-between">
+            <div>
+                <i class="fa-solid fa-gift text-amber-700 text-lg mb-2 block"></i>
+                <p class="text-[10px] text-stone-400 font-bold uppercase">Kirim Kado</p>
+                <p class="text-[10px] text-stone-800 font-bold leading-tight my-1 line-clamp-2">Jl. Soekarno Hatta No. 123, Bandung</p>
+            </div>
+            <button onclick="salinTeks('Jl. Soekarno Hatta No. 123, Bandung', 'Alamat')" class="text-[9px] border border-amber-700 text-amber-700 py-1.5 rounded-full font-bold active:bg-amber-700 active:text-white transition-all uppercase">Salin Alamat</button>
+        </div>
+
+    </div>
+</section>
 
         <section id="rsvp" class="py-20 px-6 text-center bg-[#fffcf5]">
             <h2 class="text-4xl font-aesthetic text-amber-700 mb-10">Doa & Ucapan</h2>
@@ -428,21 +462,33 @@
         else { audio.pause(); btn.classList.remove('spinning'); }
     }
 
-    // 4. Salin Nomor
-    function salinNomor() {
-        const nomor = document.getElementById("nomor-dana").innerText;
+  function salinTeks(nomor, label) {
+    // Cara Modern
+    if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(nomor).then(() => {
-            alert("Nomor Dana disalin: " + nomor);
-        }).catch(() => {
-            const textArea = document.createElement("textarea");
-            textArea.value = nomor;
-            document.body.appendChild(textArea);
-            textArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textArea);
-            alert("Nomor Dana disalin: " + nomor);
+            alert("Berhasil menyalin " + label + ": " + nomor);
+        }).catch(err => {
+            fallbackSalin(nomor, label);
         });
+    } else {
+        // Cara Lama (untuk HP/Browser jadul)
+        fallbackSalin(nomor, label);
     }
+}
+
+function fallbackSalin(text, label) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+        document.execCommand('copy');
+        alert("Berhasil menyalin " + label + ": " + text);
+    } catch (err) {
+        alert("Gagal menyalin, silakan salin manual.");
+    }
+    document.body.removeChild(textArea);
+}
 
     // 5. Auto Scroll Logic
     function toggleAutoScroll() {
